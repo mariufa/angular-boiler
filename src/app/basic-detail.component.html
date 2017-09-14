@@ -2,4 +2,11 @@
   <h2>
     {{title}}!
   </h2>
+  <div class="container">
+    <ul>
+      <li *ngFor="let basic of basics">
+        {{basic.name}}
+      </li>
+    </ul>
+  </div>
 </div>
