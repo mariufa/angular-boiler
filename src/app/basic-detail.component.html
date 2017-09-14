@@ -1,8 +1,19 @@
+
 <div style="text-align:center">
   <h2>
     {{title}}!
   </h2>
   <div class="container">
+    <form>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Name">
+        <div class="input-group-btn">
+          <button class="btn btn-primary" type="submit">
+            +
+          </button>
+        </div>
+      </div>
+    </form>
     <table class="table">
       <tr *ngFor="let basic of basics">
         {{basic.name}}
