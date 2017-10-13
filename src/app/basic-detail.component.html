@@ -6,9 +6,9 @@
   <div class="container">
     <form>
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Name">
+        <input #basicName type="text" class="form-control" placeholder="Name">
         <div class="input-group-btn">
-          <button class="btn btn-primary" type="submit">
+          <button class="btn btn-primary" (click)="add(basicName.value); basicName.value=''" type="submit">
             +
           </button>
         </div>

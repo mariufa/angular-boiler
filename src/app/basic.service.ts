@@ -5,17 +5,18 @@ import 'rxjs/add/operator/toPromise';
 
 import { Basic } from './basic'
 
+@Injectable()
 export class BasicService {
 
   private headers = new Headers({'Content-type': 'application/json'});
-  private basicsUrl = '/basics';
+  private basicsUrl = 'http://localhost:3000/basics';
 
   constructor(private http: Http) { }
 
   getBasics(): Promise<Basic[]> {
-    return this.http.get(this.basicsUrl)
+    return this.http.get(this.basicsUrl, this.headers)
                 .toPromise()
-                .then(response => response.json().data as Basic[])
+                .then(response => response.json() as Basic)
                 .catch(this.handleError);
   }
 

@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { BasicDetailComponent } from './basic-detail.component';
+import { BasicService } from './basic.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +13,11 @@ import { BasicDetailComponent } from './basic-detail.component';
     BasicDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ BasicService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
