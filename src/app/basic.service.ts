@@ -10,7 +10,7 @@ import { Basic } from './basic'
 export class BasicService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private basicsUrl = 'http://localhost:3000/basics';
+  private basicsUrl = 'http://127.0.0.1:3000/basics';
 
   constructor(private http: Http) { }
 
