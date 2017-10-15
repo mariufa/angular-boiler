@@ -3,18 +3,19 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+
 import { Basic } from './basic'
 
 @Injectable()
 export class BasicService {
 
-  private headers = new Headers({'Content-type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json'});
   private basicsUrl = 'http://localhost:3000/basics';
 
   constructor(private http: Http) { }
 
   getBasics(): Promise<Basic[]> {
-    return this.http.get(this.basicsUrl, this.headers)
+    return this.http.get(this.basicsUrl)
                 .toPromise()
                 .then(response => response.json() as Basic)
                 .catch(this.handleError);
@@ -26,7 +27,7 @@ export class BasicService {
 
   create(name: string): Promise<Basic> {
     return this.http
-      .post(this.basicsUrl, JSON.stringify({name: name}), this.headers)
+      .post(this.basicsUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
       .then(res => res.json() as Basic)
       .catch(this.handleError);
