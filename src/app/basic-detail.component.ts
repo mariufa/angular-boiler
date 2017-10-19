@@ -18,7 +18,10 @@ export class BasicDetailComponent implements OnInit {
   getBasics(): void {
     this.basicService
       .getBasics()
-      .then(basics => this.basics = basics);
+      .then(basics => {
+        this.basics = basics;
+        console.log(this.basics);
+      });
   }
 
   add(name: string): void {
