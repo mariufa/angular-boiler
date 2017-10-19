@@ -16,7 +16,8 @@
     </form>
     <table class="table">
       <tr *ngFor="let basic of basics">
-        {{basic.name}}
+          {{basic.name}}
+          <button class="btn btn-danger" (click)="delete(basic)">Del</button>
       </tr>
     </table>
   </div>

@@ -33,6 +33,14 @@ export class BasicDetailComponent implements OnInit {
       });
   }
 
+  delete(basic: Basic): void {
+    this.basicService.delete(basic._id)
+      .then(() => {
+        console.log("Deleted: " + basic.name);
+        this.getBasics();
+      });
+  }
+
   ngOnInit(): void {
     this.getBasics();
   }

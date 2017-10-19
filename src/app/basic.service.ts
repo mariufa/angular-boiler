@@ -21,8 +21,12 @@ export class BasicService {
                 .catch(this.handleError);
   }
 
-  delete(id: string): Promise<void> {
-    return null;
+  delete(id: String): Promise<void> {
+    const url = `${this.basicsUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
   }
 
   create(name: string): Promise<Basic> {
