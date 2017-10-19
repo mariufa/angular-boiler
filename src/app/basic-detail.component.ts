@@ -3,10 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Basic } from './basic';
 import { BasicService} from './basic.service';
 
-const BASICS: Basic[] = [
-  { name: 'Marius' },
-  { name: 'Test' }
-];
 
 @Component({
   selector: 'basic-detail',
