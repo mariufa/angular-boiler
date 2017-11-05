@@ -3,9 +3,9 @@
     <form>
       <div class="form-group">
         <div class="input-group">
-          <input #basicName type="text" class="form-control" placeholder="Name">
+          <input #messageText type="text" class="form-control" placeholder="Message">
           <div class="input-group-btn">
-            <button class="btn btn-primary" (click)="add(basicName.value); basicName.value=''" type="submit">
+            <button class="btn btn-primary" (click)="add(messageText.value); messageText.value=''" type="submit">
               +
             </button>
           </div>
@@ -13,11 +13,11 @@
       </div>
     </form>
     <table class="table table-bordered table-striped">
-      <tr *ngFor="let basic of basics">
+      <tr *ngFor="let message of messages">
         <td>
           <div class="row">
             <div class="col-12">
-              {{basic.name}}
+              {{message.text}}
             </div>
           </div>
           <div class="row">
@@ -28,7 +28,7 @@
                 <button type="button" class="btn btn-sm btn-success" >
                   <i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </button>
-                <button type="button" class="btn btn-sm btn-danger"  (click)="delete(basic)">
+                <button type="button" class="btn btn-sm btn-danger"  (click)="delete(message)">
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
               </div>

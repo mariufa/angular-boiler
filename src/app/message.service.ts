@@ -4,36 +4,36 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 
-import { Basic } from './basic'
+import { Message } from './message';
 
 @Injectable()
-export class BasicService {
+export class MessageService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private basicsUrl = '/api/basics';
+  private messagesUrl = '/api/messages';
 
   constructor(private http: Http) { }
 
-  getBasics(): Promise<Basic[]> {
-    return this.http.get(this.basicsUrl)
+  getMessages(): Promise<Message[]> {
+    return this.http.get(this.messagesUrl)
                 .toPromise()
-                .then(response => response.json() as Basic)
+                .then(response => response.json() as Message)
                 .catch(this.handleError);
   }
 
   delete(id: String): Promise<void> {
-    const url = `${this.basicsUrl}/${id}`;
+    const url = `${this.messagesUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Basic> {
+  create(text: string): Promise<Message> {
     return this.http
-      .post(this.basicsUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.messagesUrl, JSON.stringify({text: text}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json() as Basic)
+      .then(res => res.json() as Message)
       .catch(this.handleError);
   }
 
