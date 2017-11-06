@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Message } from './message';
 import { MessageService} from './message.service';
@@ -12,7 +13,9 @@ import { MessageService} from './message.service';
 export class MessageComponent implements OnInit {
   messages: Message[];
 
-  constructor(private messageService: MessageService) { }
+  constructor(
+    private router: Router,
+    private messageService: MessageService) { }
 
   getMessages(): void {
     this.messageService
@@ -37,6 +40,10 @@ export class MessageComponent implements OnInit {
         console.log("Deleted: " + message._id);
         this.getMessages();
       });
+  }
+
+  gotoMessage(message: Message): void {
+    this.router.navigate(['/message', message._id]);
   }
 
   ngOnInit(): void {

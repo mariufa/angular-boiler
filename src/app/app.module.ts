@@ -5,17 +5,22 @@ import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { MessageComponent } from './message.component';
+import { MessageDetailComponent} from './message-detail.component';
 import { MessageService } from './message.service';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessageComponent
+    MessageComponent,
+    MessageDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [ MessageService ],
   bootstrap: [ AppComponent ]

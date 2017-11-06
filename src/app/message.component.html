@@ -25,10 +25,10 @@
             </div>
             <div class="col-1">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-success" >
+                <button type="button" class="btn btn-sm btn-success" (click)="gotoMessage(message)">
                   <i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </button>
-                <button type="button" class="btn btn-sm btn-danger"  (click)="delete(message)">
+                <button type="button" class="btn btn-sm btn-danger" (click)="delete(message)">
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
               </div>

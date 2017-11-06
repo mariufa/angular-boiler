@@ -21,6 +21,14 @@ export class MessageService {
                 .catch(this.handleError);
   }
 
+  getMessage(id: String): Promise<Message> {
+    const url = `${this.messagesUrl}/${id}`;
+    return this.http.get(url)
+                .toPromise()
+                .then(response => response.json() as Message)
+                .catch(this.handleError);
+  }
+
   delete(id: String): Promise<void> {
     const url = `${this.messagesUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
