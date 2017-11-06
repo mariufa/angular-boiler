@@ -23,14 +23,8 @@
           <div class="col-md-11 col-sm-11">
           </div>
           <div class="col-md-1 col-sm-1">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-success" (click)="gotoMessage(message)">
-                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-              </button>
-              <button type="button" class="btn btn-sm btn-danger" (click)="delete(message)">
-                <i class="fa fa-times" aria-hidden="true"></i>
-              </button>
-            </div>
+            <a href="#" class="text-danger fa fa-times" (click)="delete(message)" aria-hidden="true"></a>
+            <a href="#" class="text-success fa fa-arrow-right" (click)="gotoMessage(message)" aria-hidden="true"></a>
           </div>
         </div>
       </td>
