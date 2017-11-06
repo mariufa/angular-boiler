@@ -1,3 +1,12 @@
-<div class="form-group">
-  <textarea class="form-control" [(ngModel)]='message.text' rows="5"></textarea>
+
+<div class="form">
+  <div class="form-group">
+    <textarea class="form-control" [(ngModel)]="message.text" [disabled]="isTextAreaDisabled" rows="5"></textarea>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-sm btn-primary pull-left" (click)="clickEditUpdate()">
+      <span *ngIf="isTextAreaDisabled">Edit</span>
+      <span *ngIf="!isTextAreaDisabled">Update</span>
+    </button>
+  </div>
 </div>

@@ -13,15 +13,30 @@ import 'rxjs/add/operator/switchMap';
 
 export class MessageDetailComponent implements OnInit {
   message: Message;
+  isTextAreaDisabled: Boolean;
 
   constructor(
     private messageService: MessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.isTextAreaDisabled = true;
     this.route.paramMap
       .switchMap((params: ParamMap) => this.messageService.getMessage(params.get('id')))
-      .subscribe(message => this.message = message);
+      .subscribe(message => {
+        this.message = message;
+      });
+  }
+
+  clickEditUpdate(): void {
+    this.isTextAreaDisabled = !this.isTextAreaDisabled;
+    if (this.isTextAreaDisabled) {
+      this.updateMessage();
+    }
+  }
+
+  updateMessage(): void {
+    this.messageService.update(this.message);
   }
 }

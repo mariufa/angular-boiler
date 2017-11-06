@@ -45,6 +45,14 @@ export class MessageService {
       .catch(this.handleError);
   }
 
+  update(message: Message): Promise<Message> {
+    const url = `${this.messagesUrl}/${message._id}`;
+    return this.http.put(url, JSON.stringify(message), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json() as Message)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occured', error);
     return Promise.reject(error.message || error);

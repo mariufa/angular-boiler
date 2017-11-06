@@ -1,41 +1,39 @@
 <div style="text-align:center">
-  <div class="container col-5">
-    <form>
-      <div class="form-group">
-        <div class="input-group">
-          <input #messageText type="text" class="form-control" placeholder="Message">
-          <div class="input-group-btn">
-            <button class="btn btn-primary" (click)="add(messageText.value); messageText.value=''" type="submit">
-              +
-            </button>
-          </div>
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <input #messageText type="text" class="form-control" placeholder="Message">
+        <div class="input-group-btn">
+          <button class="btn btn-primary" (click)="add(messageText.value); messageText.value=''" type="submit">
+            +
+          </button>
         </div>
       </div>
-    </form>
-    <table class="table table-bordered table-striped">
-      <tr *ngFor="let message of messages">
-        <td>
-          <div class="row">
-            <div class="col-12">
-              {{message.text}}
+    </div>
+  </form>
+  <table class="table table-bordered table-striped">
+    <tr *ngFor="let message of messages">
+      <td>
+        <div class="row">
+          <div class="col-12">
+            {{message.text}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-11 col-sm-11">
+          </div>
+          <div class="col-md-1 col-sm-1">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-success" (click)="gotoMessage(message)">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-sm btn-danger" (click)="delete(message)">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
             </div>
           </div>
-          <div class="row">
-            <div class="col-10">
-            </div>
-            <div class="col-1">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-success" (click)="gotoMessage(message)">
-                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="btn btn-sm btn-danger" (click)="delete(message)">
-                  <i class="fa fa-times" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
