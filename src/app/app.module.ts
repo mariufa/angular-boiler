@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { MessageComponent } from './message.component';
 import { MessageDetailComponent} from './message-detail.component';
 import { MessageService } from './message.service';
+import { AuthGuard } from './auth.guard';
+import { AuthenticationService } from './authentication.service';
+import { LoginComponent } from './login.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     MessageComponent,
     MessageDetailComponent
   ],
@@ -22,7 +26,11 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ MessageService ],
+  providers: [
+    AuthGuard,
+    AuthenticationService,
+    MessageService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -3,19 +3,31 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-
+import { AuthenticationService } from './authentication.service';
 import { Message } from './message';
 
 @Injectable()
 export class MessageService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  //private headers = new Headers({
+  //  'Content-Type': 'application/json',
+  //  'Authorization': 'JWT ' + this.authenticationService.token;
+  //});
+  private headers: Headers
   private messagesUrl = '/api/messages';
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private authenticationService: AuthenticationService,
+  ) {
+    this.headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'JWT ' + this.authenticationService.token
+    });
+  }
 
   getMessages(): Promise<Message[]> {
-    return this.http.get(this.messagesUrl)
+    return this.http.get(this.messagesUrl, {headers: this.headers})
                 .toPromise()
                 .then(response => response.json() as Message)
                 .catch(this.handleError);
@@ -23,7 +35,7 @@ export class MessageService {
 
   getMessage(id: String): Promise<Message> {
     const url = `${this.messagesUrl}/${id}`;
-    return this.http.get(url)
+    return this.http.get(url, {headers: this.headers})
                 .toPromise()
                 .then(response => response.json() as Message)
                 .catch(this.handleError);
